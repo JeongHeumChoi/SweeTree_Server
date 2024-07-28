@@ -171,12 +171,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 2
 
+REST_USE_JWT = True
+
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:3000' # 소셜로그인 성공 뒤, 클라이언트로 redirect. 환경변수로 빼셈
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -197,6 +199,8 @@ REST_AUTH = {
     'JWT_AUTH_COOKIE_USE_CSRF': False,
     'JWT_AUTH_SECURE': True,
     'SESSION_LOGIN': False,
+    'JWT_AUTH_COOKIE': 'access_token',
+    'JWT_AUTH_REFRESH_COOKIE': 'refresh_token',
 }
 
 CORS_ALLOW_CREDENTIALS = True
